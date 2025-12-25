@@ -1,13 +1,14 @@
-import requests
+import requests # type: ignore
 from datetime import datetime
 import os
 import subprocess
 import json
-import urllib3
-from dotenv import load_dotenv
+import urllib3 # type: ignore
+from dotenv import load_dotenv # type: ignore
 
 # Load .env variables
-load_dotenv()
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
