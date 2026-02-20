@@ -121,7 +121,7 @@ if __name__ == "__main__":
 
     for repo in repos:
         print(f"Cleaning up repository: {repo}")
-        if str(repo) == 'fastapi':
-            cleanup_repo(repo)
+        # if str(repo) == 'fastapi':
+        cleanup_repo(repo)
 
     run_garbage_collect()
