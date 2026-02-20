@@ -20,7 +20,14 @@ PASSWORD = os.getenv("REGISTRY_PASS")
 REGISTRY_CONTAINER = os.getenv("REGISTRY_CONTAINER", "registry")
 CONFIG_PATH = os.getenv("REGISTRY_CONFIG_PATH", "/etc/docker/registry/config.yml")
 
-HEADERS = {"Accept": "application/vnd.docker.distribution.manifest.v2+json"}
+HEADERS = {
+    "Accept": (
+        "application/vnd.docker.distribution.manifest.v2+json,"
+        "application/vnd.docker.distribution.manifest.list.v2+json,"
+        "application/vnd.oci.image.manifest.v1+json,"
+        "application/vnd.oci.image.index.v1+json"
+    )
+}
 AUTH = (USERNAME, PASSWORD) 
 
 def list_repositories():
@@ -121,7 +128,7 @@ if __name__ == "__main__":
 
     for repo in repos:
         print(f"Cleaning up repository: {repo}")
-        # if str(repo) == 'fastapi':
+        # if str(repo) == 'release-api':
         cleanup_repo(repo)
 
     run_garbage_collect()
